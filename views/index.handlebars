@@ -1,0 +1,100 @@
+<!-- -->
+<!-- wrapper -->
+<div class="container text-center">
+
+	<!-- row 1 - BURGER IMAGE -->
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12 text-center">
+			<!-- image -->
+		  	<img src="/assets/img/burger.png" width="200" height="200"/>
+		<!-- end column -->
+		</div>
+	<!-- end row 1 -->
+  	</div>
+
+	<!-- row 2 - EAT-DA-BURGER HEADING -->
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12 text-center">
+			<!-- heading -->
+		  	<h1>Eat-Da-Burger!</h1>
+		<!-- end column -->
+		</div>
+	<!-- end row 2 -->
+  	</div>
+
+	<!-- row 3 - BURGERS SHOW HERE -->
+	<div class="row">
+		<!-- column 1 - TASTY BURGERS -->
+		<div class="col-md-6 text-center">
+
+			<h2>Tasty Burgers!</h2>
+
+			<ol>
+				{{#each burgers}}
+					{{#unless this.devoured}}
+						<li>
+							<h3>
+							{{this.burger_name}}
+
+							<form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+								<input type="hidden" name="devoured" value="true">
+								<button type="submit" class="btn btn-primary">Devour it!</button>
+							</form>
+							</h3>
+						</li>
+					{{/unless}}
+				{{/each}}
+			</ol>				
+		<!-- end column 1 -->
+		</div>			
+		
+		<!-- column 2 - DEVOURED BURGERS -->
+		<div class="col-md-6 text-center">
+
+			<h2>Devoured Burgers!</h2>
+
+			<ol>
+				{{#each burgers}}
+					{{#if this.devoured}}
+						<li>
+							<h3>
+							{{this.burger_name}}
+							... Om Nom Nom!
+							<h3>
+
+					        {{> burgers/delete-burger}}
+
+						</li>
+					{{/if}}
+				{{/each}}
+			</ol>
+		<!-- end column 2 -->
+		</div>	
+		
+	<!-- end row 3 -->
+  	</div>
+
+	<!-- row 4 - USER TEXTBOX & SUBMIT BUTTON -->
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12 text-center">
+			<h1>Add a Burger</h1>
+			<form class="create-update-form" action="burgers/create" method="POST">
+
+				<div class="form-group">
+					<label for="burger">Burger Name:</label>
+					<input type="text" id="burger" name="name">
+				</div>
+
+				<button type="submit" class="btn btn-primary">Add Burger</button>
+			</form>
+		<!-- end column -->
+		</div>
+	<!-- end row 4 -->
+  	</div>
+
+
+<!-- end wrapper -->
+</div>

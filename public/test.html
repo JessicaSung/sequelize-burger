@@ -1,0 +1,106 @@
+<!-- -->
+
+!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- bootstrap cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- css stylesheet -->
+		<link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css" />
+
+		<!-- jQuery cdn -->
+		<script   src="http://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+
+		<title>Eat-Da-Burger!</title>
+	</head>
+	<body>
+
+<!-- wrapper -->
+<div class="container text-center">
+
+	<!-- row 1 - image -->
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12 text-center">
+			<!-- image -->
+		  	<img src="/public/assets/img/burger.jpg" width="200" height="200"/>
+		<!-- end column -->
+		</div>
+	<!-- end row 1 -->
+  	</div>
+
+	<!-- row 2 - heading -->
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12 text-center">
+			<!-- heading -->
+		  	<h1>Eat-Da-Burger!</h1>
+		<!-- end column -->
+		</div>
+	<!-- end row 2 -->
+  	</div>
+
+	<!-- row 3 - burgers -->
+	<div class="row">
+		<!-- column 1 -->
+		<div class="col-md-6 text-center">
+			<ul>
+				{{#each }}
+				
+			</ul>
+				
+		<!-- end column 1 -->
+		</div>			
+		
+		<!-- column 2 -->
+		<div class="col-md-6 text-center">
+			<ul>
+				
+			</ul>
+		<!-- end column 2 -->
+		</div>	
+		
+	<!-- end row 3 -->
+  	</div>
+
+	<!-- row 4 - user textbox -->
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12 text-center">
+			<!-- textbox -->
+		  	<input type="text" name="inputburger" class="resize" placeholder="Enter a burger you want to eat. Click the 'Submit' button.">
+		<!-- end column -->
+		</div>
+	<!-- end row 4 -->
+  	</div>
+
+	<!-- row 5 - submit button -->
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12 text-center">
+			<!-- submit button -->
+			<input type="submit" name="submit">
+		<!-- end column -->
+		</div>
+	<!-- end row 5 -->
+  	</div>
+
+  	<!-- row 6 - submit button -->
+	<div class="row">
+		<!-- column -->
+		<div class="col-md-12 text-center">
+			<!-- user instructions -->
+			<p>Enter a burger you want to eat. Click the 'Submit' button.</p>
+		<!-- end column -->
+		</div>
+	<!-- end row 6 -->
+  	</div>
+
+
+<!-- end wrapper -->
+</div>
+
+</body>
+</HTML>
