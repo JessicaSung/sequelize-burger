@@ -1,7 +1,9 @@
-// Import (require) burger.js
+// Import (require) burgers.js
 // =============================================================================
-var burger = require('../models/burger.js');
 var express = require('express');
+
+var models = require('../models')
+models.sequelize.sync();
 
 
 // Create app router
@@ -15,7 +17,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/burgers', function (req, res) {
-	burger.selectAll(function (data) {
+	models.selectAll(function (data) {
 		var hbsObject = { burgers: data };
 		console.log(hbsObject);
 		res.render('index', hbsObject);
@@ -25,7 +27,7 @@ router.get('/burgers', function (req, res) {
 
 // POST - insertOne
 router.post('/burgers/create', function (req, res) {
-	burger.insertOne(['burger_name'], [req.body.name], function () {
+	models.insertOne(['burger_name'], [req.body.name], function () {
 		res.redirect('/burgers');
 	});
 });
@@ -37,7 +39,7 @@ router.put('/burgers/update/:id', function (req, res) {
 
 	console.log('condition', condition);
 
-	burger.updateOne({ devoured: req.body.devoured }, condition, function () {
+	models.updateOne({ devoured: req.body.devoured }, condition, function () {
 		res.redirect('/burgers');
 	});
 });
@@ -46,7 +48,7 @@ router.put('/burgers/update/:id', function (req, res) {
 router.delete('/burgers/delete/:id', function (req, res) {
 	var condition = 'id = ' + req.params.id;
 
-	burger.deleteOne(condition, function () {
+	models.deleteOne(condition, function () {
 		res.redirect('/burgers');
 	});
 });

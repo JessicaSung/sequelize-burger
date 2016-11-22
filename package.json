@@ -1,0 +1,36 @@
+{
+  "name": "sequelize-burger",
+  "version": "1.0.0",
+  "description": "Week 14, Homework 12, Eat-Da-Burger!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessicaSung/sequelize-burger.git"
+  },
+  "keywords": [
+    "body-parser",
+    "express",
+    "express-handlebars",
+    "method-override",
+    "mysql"
+  ],
+  "author": "Jessica Sung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessicaSung/sequelize-burger/issues"
+  },
+  "homepage": "https://github.com/JessicaSung/sequelize-burger#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.7",
+    "mysql": "^2.12.0",
+    "sequelize": "^3.27.0",
+    "sequelize-cli": "^2.4.0"
+  }
+}
