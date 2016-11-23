@@ -3,7 +3,6 @@
 var express = require('express');
 
 var models = require('../models')
-models.sequelize.sync();
 
 
 // Create app router

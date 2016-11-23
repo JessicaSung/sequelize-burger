@@ -31,6 +31,9 @@ var router = require('./controllers/burger_controller.js');
 app.use('/', router);
 
 
+models.sequelize.sync({force:true});
+
+
 // DEFINE PORT AND START SERVER LISTEN
 // ==============================================
 var PORT = 3000;
