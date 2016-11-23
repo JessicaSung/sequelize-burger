@@ -11,46 +11,75 @@ models.sequelize.sync();
 var router = express.Router();
 
 
-// GET - selectAll
+// GET - findAll
 router.get('/', function (req, res) {
-	res.redirect('/burgers');
+  // Use the Burgers model to find all burgers,
+  // and use the include option to grab info from the User model.
+  // This will show the burger and its owner.
+  models.Burgers.findAll({
+    include: [ models.Users ]
+  })
+  // connect the findAll to with .then
+  .then(function(burgers) {
+    // grab the user info from our req which gets saved 
+    // to req via the users_controller.js file.
+    res.render('burgers/index', {
+      user_id: req.session.user_id,
+      email: req.session.user_email,
+      logged_in: req.session.logged_in,
+      burgers: burgers
+    })
+  })
 });
 
-router.get('/burgers', function (req, res) {
-	models.selectAll(function (data) {
-		var hbsObject = { burgers: data };
-		console.log(hbsObject);
-		res.render('index', hbsObject);
-	});
+
+// POST - create
+router.post('/create', function (req, res) {
+  // Use the Burger model to create a burger based on what's
+  // passed in req.body (burger_name)
+  models.Burgers.create({
+    burger_name: req.body.name,
+    user_id: req.session.user_id
+  })
+  // connect the .create to .then
+  .then(function() {
+    res.redirect('/');
+  })
 });
 
 
-// POST - insertOne
-router.post('/burgers/create', function (req, res) {
-	models.insertOne(['burger_name'], [req.body.name], function () {
-		res.redirect('/burgers');
-	});
+// PUT - update
+router.put('/update/:id', function(req,res) {
+  // Use the Burger model to update a burger's devoured status
+  // based on the boolean passed in req.body Burger
+  // and the id of the Burger (as passed in the url)
+  models.Burgers.update(
+  {
+    devoured: req.body.devoured
+  },
+  {
+    where: { id : req.params.id }
+  })
+  // connect it to .then.
+  .then(function (result) {
+    res.redirect('/');
+  })
 });
 
 
-// PUT - updateOne
-router.put('/burgers/update/:id', function (req, res) {
-	var condition = 'id = ' + req.params.id;
-
-	console.log('condition', condition);
-
-	models.updateOne({ devoured: req.body.devoured }, condition, function () {
-		res.redirect('/burgers');
-	});
-});
-
-// DELETE - deleteOne
-router.delete('/burgers/delete/:id', function (req, res) {
-	var condition = 'id = ' + req.params.id;
-
-	models.deleteOne(condition, function () {
-		res.redirect('/burgers');
-	});
+// DELETE - destroy
+router.delete('/delete/:id', function(req,res) {
+  // use the Burger model to delete a burger
+  // based on the id passed in the url
+  models.Burgers.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  // connect it to .then.
+  .then(function() {
+    res.redirect('/');
+  })
 });
 
 
