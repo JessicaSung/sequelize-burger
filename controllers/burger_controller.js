@@ -2,7 +2,7 @@
 // =============================================================================
 var express = require('express');
 
-var models = require('../models')
+var models = require('../models');
 
 
 // Create app router
