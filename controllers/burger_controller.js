@@ -1,7 +1,6 @@
 // Import (require) burgers.js
 // =============================================================================
 var express = require('express');
-
 var models = require('../models');
 
 
