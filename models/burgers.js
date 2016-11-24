@@ -6,12 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Burgers.belongsTo(models.Users, {
-          onDelete: "CASCADE",
-          foreignKey: {
-            allowNull: false
-          }
-        })
+        // add associations here.
       }
     }
   });

@@ -16,16 +16,13 @@ router.get('/', function (req, res) {
   // and use the include option to grab info from the User model.
   // This will show the burger and its owner.
   models.Burgers.findAll({
-    include: [ models.Users ]
+    
   })
   // connect the findAll to with .then
   .then(function(burgers) {
-    // grab the user info from our req which gets saved 
+    // grab the user info from our session which gets saved 
     // to req via the users_controller.js file.
-    res.render('burgers/index', {
-      user_id: req.session.user_id,
-      email: req.session.user_email,
-      logged_in: req.session.logged_in,
+    res.render('index', {
       burgers: burgers
     })
   })
@@ -37,8 +34,7 @@ router.post('/create', function (req, res) {
   // Use the Burger model to create a burger based on what's
   // passed in req.body (burger_name)
   models.Burgers.create({
-    burger_name: req.body.name,
-    user_id: req.session.user_id
+    burger_name: req.body.name
   })
   // connect the .create to .then
   .then(function() {
