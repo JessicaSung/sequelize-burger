@@ -28,7 +28,8 @@ app.set('view engine', 'handlebars');
 
 // Import and use router from controller.js file
 var router = require('./controllers/burger_controller.js');
-app.use('/', router);
+app.get('/', function(req, res) {res.redirect('/burgers')})
+app.use('/burgers', router);
 
 
 models.sequelize.sync();
