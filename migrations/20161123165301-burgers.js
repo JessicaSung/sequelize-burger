@@ -28,8 +28,8 @@ module.exports = {
         "Double Double",
         "Thick & Hearty",
         "Bacon Cheeseburger",
-        "hopper",
-        "SMcDouble"
+        "Whopper",
+        "McDouble"
     ]}})
   }
 };
